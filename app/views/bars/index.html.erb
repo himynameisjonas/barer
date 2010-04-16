@@ -1,7 +1,7 @@
 <% if !@bars.blank? %>
   <ul>
   <% for bar in @bars %>
-    <li><%= link_to bar.name, bar_path(bar) %></li>
+    <li><%= link_to bar.name.capitalize, bar_path(bar) %></li>
   <% end %>
   </ul>
 <% end %>

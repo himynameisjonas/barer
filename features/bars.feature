@@ -6,9 +6,9 @@ Feature: Bars
   Scenario: View a list of bars
     Given there is 3 bars
     When I go to the list of bars
-    And I should see "bar1"
-    And I should see "bar2"
-    And I should see "bar3"
+    And I should see "Bar1"
+    And I should see "Bar2"
+    And I should see "Bar3"
     And I should see "Lägg till ny bar"
   
 
@@ -16,9 +16,9 @@ Feature: Bars
     Given there is 1 bar
     When I go to the list of bars
     And I follow "bar1"
-    Then I should see "bar1" within "h1"
-    And I should see "bar1gatan"
-    And I should see "bar1staden"
+    Then I should see "Bar1" within "h1"
+    And I should see "Bar1gatan"
+    And I should see "Bar1staden"
     And I should see "Visa alla"
   
 
@@ -29,7 +29,7 @@ Feature: Bars
       | Gata | Margretelundsgatan 19 |
       | Stad | Göteborg              |
     And I press "Spara"
-    Then I should see "ny bar" within "h1"
+    Then I should see "Ny bar" within "h1"
     And I should see "Ny bar sparad"
   
 
@@ -51,7 +51,7 @@ Feature: Bars
     And press "Spara"
     Then I should see "Ändringar Sparade"
     And I should see "Drottninggatan 32"
-    And I should not see "bar1gatan"
+    And I should not see "Bar1gatan"
   
 
   Scenario: View a bar and it's prices
@@ -72,7 +72,7 @@ Feature: Bars
       | Kommentar | Innan klockan 22 |
     And press "Spara"
     Then I should see "Nytt ölpris sparat"
-    And I should see "bar1" within "h1"
+    And I should see "Bar1" within "h1"
     And I should see "Corona"
     And I should see "28 SEK"
     And I should see "Innan klockan 22"
