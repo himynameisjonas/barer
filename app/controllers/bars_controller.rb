@@ -1,7 +1,7 @@
 class BarsController < ApplicationController
   
   def index
-    @bars = Bar.find(:all, :origin => [37.792,-122.393])#Bar.find(:all)
+    @bars = Bar.find(:all)#Bar.find(:all, :origin => [37.792,-122.393])#
   end
   
   def show
