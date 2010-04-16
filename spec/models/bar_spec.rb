@@ -3,9 +3,11 @@ require 'spec_helper'
 describe Bar do
   before(:each) do
     @valid_attributes = {
-      :name => "value for name",
-      :street => "Nyafinagatan 1",
-      :city => "Metropolköping"
+        :name => "Baren",
+        :street => "Bargatan",
+        :city => "barstaden",
+        :lat => 57.7069272000,
+        :lng => 11.9678614000
     }
   end
 
@@ -22,5 +24,12 @@ describe Bar do
     
     bar = Bar.create(@valid_attributes.except(:street))
     bar.should have(1).error_on(:street)
+  end
+  
+  it "should update long/lat on update" do
+    bar = Bar.create(@valid_attributes)
+    bar.update_attributes(:city => "Vreta kloster", :street => "Sörby Gård")
+    bar.lat.to_f.should eql(58.5278407000)
+    bar.lng.to_f.should eql(15.5543592000)
   end
 end

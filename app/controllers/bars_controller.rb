@@ -14,6 +14,11 @@ class BarsController < ApplicationController
   
   def create
     @bar = Bar.create(params[:bar])
+    
+    if params[:bar][:lat].nil? || params[:bar][:lng].nil?
+      @bar.fix_position
+    end
+    
     if @bar.save
       flash[:notice] = "Ny bar sparad"
       redirect_to(bar_path(@bar))

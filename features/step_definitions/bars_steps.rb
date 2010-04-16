@@ -3,7 +3,9 @@ Given /^there is (\d) bars$/ do |number_of_bars|
     Bar.create!({
                     :name => "bar#{i+1}",
                     :street => "bar#{i+1}gatan",
-                    :city => "bar#{i+1}staden"
+                    :city => "bar#{i+1}staden",
+                    :lat => 57.7069272000,
+                    :lng => 11.9678614000              
                   })
   end
 end
