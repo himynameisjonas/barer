@@ -1,0 +1,14 @@
+<%= error_messages_for :bar %>
+
+<% form_for @bar do |f| -%>
+  
+  <%= f.label :name, "Namn" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :street, "Gata" %>
+  <%= f.text_field :street %>
+  
+  <%= f.label :city, "Stad" %>
+  <%= f.text_field :city %>
+  <%= f.submit "Spara", :disable_with => 'Sparar...' %>
+<% end -%>

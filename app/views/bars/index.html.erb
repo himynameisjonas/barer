@@ -1,0 +1,8 @@
+<% if !@bars.blank? %>
+  <ul>
+  <% for bar in @bars %>
+    <li><%= link_to bar.name, bar_path(bar) %></li>
+  <% end %>
+  </ul>
+<% end %>
+<%= link_to "Lägg till ny bar", new_bar_path() %>

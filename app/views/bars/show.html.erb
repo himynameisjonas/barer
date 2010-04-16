@@ -1,0 +1,35 @@
+<h1><%= @bar.name %></h1>
+<p>
+  <strong>gata</strong> <%= @bar.street%>
+  <br>
+  <strong>stad</strong> <%= @bar.city%>
+</p>
+
+<p>
+  <% if !@bar.lat.nil? && !@bar.lng.nil? %>
+    <h2>karta</h2>
+    <img src="http://maps.google.com/maps/api/staticmap?center=<%=@bar.lat%>,<%=@bar.lng%>&zoom=16&size=400x400&markers=color:blue|<%=@bar.lat%>,<%=@bar.lng%>&sensor=false">
+
+  <%end%>
+</p>
+
+<% if !@bar.beer.blank? %>
+  <h2>ölpriser</h2>
+  <ul>
+  <% for beer in @bar.beer %>
+    <li>
+    <strong><%= beer.name %></strong>
+    <%= number_to_currency beer.price, :unit => 'SEK',:precision => 0, :format => "%n %u",:separator => ",", :delimiter => "." %>
+    <%= beer.comment %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<p>
+  <%= link_to "Lägg till nytt ölpris", new_bar_beer_path(@bar) %>
+  <br>
+  <%= link_to "Redigera Bar", edit_bar_path(@bar) %>
+  <br>
+  <%= link_to "Visa alla Barer", bars_path() %>
+</p>

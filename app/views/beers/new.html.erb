@@ -1,0 +1,19 @@
+<%= error_messages_for :beer %>
+
+<% form_for ([:bar, @beer]) do |f| -%>
+  <p>
+  <%= f.label :name, "Namn" %>
+  <%= f.text_field :name %>
+  </p>
+  <p>
+  <%= f.label :price, "Pris" %>
+  <%= f.text_field :price %>
+  </p>
+  <p>
+  <%= f.label :comment, "Kommentar" %>
+  <%= f.text_field :comment %>
+  </p>
+  <%= f.submit "Spara", :disable_with => 'Sparar...' %>
+<% end -%>
+
+<%= link_to "Tillbaka", bar_path(@beer.bar) %>
