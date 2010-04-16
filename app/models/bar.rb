@@ -1,6 +1,6 @@
 class Bar < ActiveRecord::Base
   include Geokit::Geocoders
-  acts_as_mappable
+  #acts_as_mappable
   has_many :beer
   before_save :fix_position
   
