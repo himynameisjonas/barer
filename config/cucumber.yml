@@ -1,4 +1,4 @@
 default: --format pretty --color
 wip: --tags @wip:3 --wip features
 autotest: --format pretty --color --tags @wip:3
-autotest-all: --color
+autotest-all: --color --format pretty

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.devise_for :users
+
   
   map.root :controller => "bars"
   
@@ -14,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
     bars.resources :beers, :as => 'drycker', :path_names => { :new => 'ny', :edit => 'korrigera' }
   end
   
-  map.resource :session
+  #map.resource :session
 
   # The priority is based upon order of creation: first created -> highest priority.
 

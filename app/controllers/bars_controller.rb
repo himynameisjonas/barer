@@ -1,11 +1,13 @@
 class BarsController < ApplicationController
   
+  before_filter :authenticate_user!, :except => [:show, :index]
+  
   def index
     @bars = Bar.find(:all)#Bar.find(:all, :origin => [37.792,-122.393])#
   end
   
   def show
-    @bar = Bar.find(params[:id], :include => [:beer])
+    @bar = Bar.find(params[:id], :include => [:beer,:user])
   end
   
   def new
@@ -13,7 +15,8 @@ class BarsController < ApplicationController
   end
   
   def create
-    @bar = Bar.create(params[:bar])
+    
+    @bar = current_user.bar.create(params[:bar])
     
     if params[:bar][:lat].nil? || params[:bar][:lng].nil?
       @bar.fix_position

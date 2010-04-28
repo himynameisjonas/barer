@@ -1,6 +1,12 @@
 class BeersController < ApplicationController
   
+  before_filter :authenticate_user!
+  
   def new
+    if !user_signed_in?
+      flash[:error] = "Måste vara medlem"
+      redirect_to(new_user_registration_path)
+    end
     @beer = Bar.find(params[:bar_id]).beer.new
   end
   

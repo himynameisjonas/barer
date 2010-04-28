@@ -11,9 +11,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     when /the signup page/
-      signup_path
+      new_user_registration_path
     when /the login page/
-      login_path
+      new_user_session_path
     when /list of bars/
       bars_path
     when /add new bar/

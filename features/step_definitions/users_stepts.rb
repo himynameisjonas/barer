@@ -1,16 +1,16 @@
 Given /^a valid user$/ do
   @user = User.create!({
-                  :login => "jonas",
+                  :display_name => "Jonas",
                   :email => "jonas@example.com",
                   :password => "123456",
                   :password_confirmation => "123456"
                 })
 end
 
-Given /^a logged in user$/ do
+Given /^I am a logged in user$/ do
   Given "a valid user"
-  visit login_url
-  fill_in "Login", :with => "jonas"
+  visit new_user_session_url
+  fill_in "Email", :with => "jonas@example.com"
   fill_in "Password", :with => "123456"
-  click_button "Log in"
+  click_button "Sign in"
 end

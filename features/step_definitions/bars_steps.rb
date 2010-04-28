@@ -1,6 +1,6 @@
 Given /^there is (\d) bars$/ do |number_of_bars|
   number_of_bars.to_i.times do |i|
-    Bar.create!({
+    @user.bar.create!({
                     :name => "bar#{i+1}",
                     :street => "bar#{i+1}gatan",
                     :city => "bar#{i+1}staden",
@@ -11,10 +11,10 @@ Given /^there is (\d) bars$/ do |number_of_bars|
 end
 
 Given /^there is 1 bar$/ do 
-  @bar = Bar.create!({
+  @bar = @user.bar.create!({
           :name => "bar1",
           :street => "bar1gatan",
-          :city => "bar1staden"
+          :city => "bar1staden",
         })
 end
 

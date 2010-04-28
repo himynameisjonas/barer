@@ -7,7 +7,8 @@ describe Bar do
         :street => "Bargatan",
         :city => "barstaden",
         :lat => 57.7069272000,
-        :lng => 11.9678614000
+        :lng => 11.9678614000,
+        :user_id => 1
     }
   end
 
@@ -24,6 +25,9 @@ describe Bar do
     
     bar = Bar.create(@valid_attributes.except(:street))
     bar.should have(1).error_on(:street)
+    
+    bar = Bar.create(@valid_attributes.except(:user_id))
+    bar.should have(1).error_on(:user_id)
   end
   
   it "should update long/lat on update" do
