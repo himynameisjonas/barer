@@ -1,26 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>Application</title>
-    <%= stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css' %>
-    <%= stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/base/base-min.css' %>
-    <%= javascript_include_tag 'jquery-1.4.min', 'application', :cache => true %>
-  </head>
-  <body>
-    <%= render :partial => 'layouts/flashes' -%>
-    <div id="doc" class="container">
-      <div id="user_nav">  
-        <% if user_signed_in? %>  
-          Inloggad som <%= current_user.display_name %>. Inte du?  
-          <%= link_to "Logga ut", destroy_user_session_path %>  
-        <% else %>  
-          <%= link_to "Registrera", new_user_registration_path %> or  
-          <%= link_to "Logga in", new_user_session_path %>  
-        <% end %>  
-      </div>
-      <%= yield %>
-    </div>
-  </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+  <title>barer</title>
+  <%= stylesheet_link_tag 'style' %>
+  <%#= stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css' %>
+  <%#= stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/base/base-min.css' %>
+  <%= javascript_include_tag 'jquery-1.4.min', 'application', 'functions', :cache => true %>
+</head>
+
+<body>
+
+<div id="topbar" class="transparent">
+  
+  <% if user_signed_in? %>
+    <div id="title"><%= current_user.display_name %></div>
+    <div id="leftnav"><%= link_to "Logga ut", destroy_user_session_path %></div>
+  <% else %>
+    <div id="title">ej inloggad</div>
+    <div id="leftnav"><%= link_to "Registrera", new_user_registration_path %></div>
+    <div id="rightnav"><%= link_to "Logga in", new_user_session_path %></div>
+
+  <% end %>
+</div>
+<div id="content">
+  <%= render :partial => 'layouts/flashes' -%>
+  <%= yield %>
+</div>
+<div id="footer">
+	<!-- Support iWebKit by sending us traffic; please keep this footer on your page, consider it a thank you for our work :-) -->
+	<a class="noeffect" href="http://iwebkit.net">Powered by iWebKit</a></div>
+
+</body>
+
 </html>

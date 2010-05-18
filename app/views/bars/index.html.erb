@@ -1,9 +1,11 @@
-<h1>Barer</h1>
+<h1 class="graytitle">Barer</h1>
 <% if !@bars.blank? %>
-  <ul>
+  <ul class="pageitem">
   <% for bar in @bars %>
-    <li><%= link_to bar.name.capitalize, bar_path(bar) %></li>
+    <li class="menu"><%= link_to "<span class='name'>#{bar.name.capitalize}</span><span class='arrow'> </span>", bar_path(bar) %></li>
   <% end %>
   </ul>
 <% end %>
-<%= link_to "Lägg till ny bar", new_bar_path() %>
+<ul class="pageitem">
+<li class="menu"><%= link_to "<span class='name'>Lägg till ny bar</span><span class='arrow'> </span>", new_bar_path() %></li>
+</ul>
