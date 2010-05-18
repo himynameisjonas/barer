@@ -12,7 +12,7 @@ Feature: Authentication
       | Password confirmation | 123456            |
     And I press "Sign up"
     Then I should see "You have signed up successfully"
-    And I should see "Inloggad som Jonas"
+    And I should see "Jonas"
   
 
   Scenario: Login

@@ -1,23 +1,31 @@
-<h1><%= @bar.name.capitalize %></h1>
+<h1 class="graytitle"><%= @bar.name.capitalize %></h1>
 
-<p>
-  <strong>gata</strong> <%= @bar.street.capitalize%>
-  <br>
-  <strong>stad</strong> <%= @bar.city.capitalize%>
-</p>
 
-<p>
+<ul class="pageitem">
+  <li class="textbox">
+    <span class="header">Adress</span>
+    <p>
+      <%= @bar.street.capitalize%>
+      <br/>
+      <%= @bar.city.capitalize%>
+    </p>
+  </li>
+</ul>
+
   <% if !@bar.lat.nil? && !@bar.lng.nil? %>
-    <h2>karta</h2>
-    <img src="http://maps.google.com/maps/api/staticmap?center=<%=@bar.lat%>,<%=@bar.lng%>&zoom=16&size=400x400&markers=color:blue|<%=@bar.lat%>,<%=@bar.lng%>&sensor=false">
+    <h2 class="graytitle">karta</h2>
+    <ul class="pageitem">
+      <li class="textbox">
+        <img src="http://maps.google.com/maps/api/staticmap?center=<%=@bar.lat%>,<%=@bar.lng%>&zoom=16&size=400x400&markers=color:blue|<%=@bar.lat%>,<%=@bar.lng%>&sensor=false">
+      </li>
+    </ul>
   <%end%>
-</p>
 
 <% if !@bar.beer.blank? %>
-  <h2>ölpriser</h2>
-  <ul>
+  <h2 class="graytitle">ölpriser</h2>
+  <ul class="pageitem">
   <% for beer in @bar.beer %>
-    <li>
+    <li class="textbox">
     <strong><%= beer.name %></strong>
     <%= number_to_currency beer.price, :unit => 'SEK',:precision => 0, :format => "%n %u",:separator => ",", :delimiter => "." %>
     <%= beer.comment %>
@@ -25,11 +33,10 @@
   <% end %>
   </ul>
 <% end %>
-<p><small>Skapad av <%=@bar.user.display_name%></small></p>
-<p>
-  <%= link_to "Lägg till nytt ölpris", new_bar_beer_path(@bar) %>
-  <br>
-  <%= link_to "Redigera Bar", edit_bar_path(@bar) %>
-  <br>
-  <%= link_to "Visa alla Barer", bars_path() %>
-</p>
+<ul class="pageitem"><li class="textbox"><small>Skapad av <%=@bar.user.display_name%></small></li></ul>
+
+<ul class="pageitem">
+  <li class="menu"><%= link_to "<span class='name'>Lägg till nytt ölpris</span><span class='arrow'> </span>", new_bar_beer_path(@bar) %></li>
+  <li class="menu"><%= link_to "<span class='name'>Redigera Bar</span><span class='arrow'> </span>", edit_bar_path(@bar) %></li>
+  <li class="menu"><%= link_to "<span class='name'>Visa alla Barer</span><span class='arrow'> </span>", bars_path() %></li>
+</ul>
