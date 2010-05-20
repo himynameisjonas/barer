@@ -14,26 +14,22 @@
 
 <body>
 
-<div id="topbar" class="transparent">
-  
-  <% if user_signed_in? %>
-    <div id="title"><%= current_user.display_name %></div>
-    <div id="leftnav"><%= link_to "Logga ut", destroy_user_session_path %></div>
-  <% else %>
-    <div id="title">ej inloggad</div>
-    <div id="leftnav"><%= link_to "Registrera", new_user_registration_path %></div>
-    <div id="rightnav"><%= link_to "Logga in", new_user_session_path %></div>
-
-  <% end %>
-</div>
 <div id="content">
   <%= render :partial => 'layouts/flashes' -%>
   <%= yield %>
 </div>
 <div id="footer">
-	<!-- Support iWebKit by sending us traffic; please keep this footer on your page, consider it a thank you for our work :-) -->
-	<a class="noeffect" href="http://iwebkit.net">Powered by iWebKit</a></div>
-
+  <p>
+  <% if user_signed_in? %>
+    <%= current_user.display_name %> | 
+    <%= link_to "Logga ut", destroy_user_session_path %>
+  <% else %>
+    Ej inloggad |
+    <%= link_to "Registrera", new_user_registration_path %> |
+    <%= link_to "Logga in", new_user_session_path %>
+  <% end %>
+  </p>
+  </div>
 </body>
 
 </html>
