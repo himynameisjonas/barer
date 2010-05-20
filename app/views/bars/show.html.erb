@@ -33,6 +33,17 @@
   <% end %>
   </ul>
 <% end %>
+
+<% if !@bar.opening_hour.blank? %>
+  <h2 class="graytitle">öpptettider</h2>
+  <ul class="pageitem">
+  <% for day in @bar.opening_hour %>
+    <li class="textbox">
+      <%= day.weekday %> <%= day.open.strftime("%H:%M") %>-<%= day.close.strftime("%H:%M") %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
 <ul class="pageitem"><li class="textbox"><small>Skapad av <%=@bar.user.display_name%></small></li></ul>
 
 <ul class="pageitem">

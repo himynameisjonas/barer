@@ -21,3 +21,9 @@ end
 Given /^the bar has 1 beer$/ do
   @bar.beer.create(:name => "Red Stripe", :price => "35")
 end
+
+Given /^the bar has the following opening hours$/ do |table|
+  table.hashes.each do |attributes|
+    @bar.opening_hour.create!(attributes)
+  end
+end

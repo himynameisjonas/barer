@@ -4,6 +4,7 @@ class Bar < ActiveRecord::Base
   
   has_many :beer
   belongs_to :user
+  has_many :opening_hour
   
   validates_presence_of :street
   validates_presence_of :city

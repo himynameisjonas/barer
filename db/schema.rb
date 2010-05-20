@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100416144200) do
+ActiveRecord::Schema.define(:version => 20100520183138) do
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(:version => 20100416144200) do
     t.string   "name"
     t.integer  "price"
     t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "opening_hours", :force => true do |t|
+    t.integer  "bar_id"
+    t.integer  "weekday"
+    t.time     "open"
+    t.time     "close"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

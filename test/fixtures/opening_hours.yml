@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bar_id: 1
+  weekday: 1
+  open: 2010-05-20 20:31:38
+  close: 2010-05-20 20:31:38
+
+two:
+  bar_id: 1
+  weekday: 1
+  open: 2010-05-20 20:31:38
+  close: 2010-05-20 20:31:38
