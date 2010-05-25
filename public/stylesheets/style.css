@@ -1,8 +1,6 @@
 /* @override 
-	http://localhost:3000/stylesheets/style.css?1274786911
-	http://localhost:3000/stylesheets/style.css?1274787163
-	http://localhost:3000/stylesheets/style.css?1274787309
-	http://localhost:3000/stylesheets/style.css?1274787756
+	http://localhost:3000/stylesheets/style.css?1274788501
+	http://localhost:3000/stylesheets/style.css?1274799375
 */
 
 /* Containers
@@ -449,4 +447,18 @@ h2 {
 #beers strong {
 	margin-left: -10px;
 	display: block;
+}
+
+#flash div{
+	padding: 10px 10px 10px;
+	margin: 10px 0 10px;
+}
+
+.alert {
+	background-color: #d7485c;
+	color: #fff;
+}
+.notice {
+	background-color: #46ac54;
+	color: #fff;
 }

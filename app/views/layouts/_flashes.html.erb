@@ -1,5 +1,5 @@
-<div id="flash">
+<div id="flash" class="container_12 clearfix">
   <% flash.each do |key, value| -%>
-    <div class="<%= key %>"><%=h value %></div>
+    <div class="grid_12 <%= key %>"><%=h value %></div>
   <% end -%>
 </div>

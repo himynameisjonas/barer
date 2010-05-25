@@ -1,5 +1,8 @@
-<h2>Sign up</h2>
+<% content_for :title do -%>
+  Bli medlem
+<% end -%>
 
+<div class="grid_12">
 <% form_for resource_name, resource, :url => registration_path(resource_name) do |f| -%>
   <%= f.error_messages %>
   <p><%= f.label :display_name %></p>
@@ -16,5 +19,7 @@
 
   <p><%= f.submit "Sign up" %></p>
 <% end -%>
-
-<%= render :partial => "shared/devise_links" %>
+</div>
+<% content_for :menu do -%>
+  <div class="grid_6"><%= render :partial => "shared/devise_links" %></div>
+<% end -%>

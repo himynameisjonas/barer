@@ -1,4 +1,8 @@
-<h2>Nytt ölpris</h2>
+<% content_for :title do -%>
+  Nytt ölpris
+<% end -%>
+
+<div class="grid_6">
 <%= error_messages_for :beer %>
 
 <% form_for ([:bar, @beer]) do |f| -%>
@@ -16,5 +20,7 @@
   </p>
   <%= f.submit "Spara", :disable_with => 'Sparar...' %>
 <% end -%>
-
-<%= link_to "Tillbaka", bar_path(@beer.bar) %>
+</div>
+<% content_for :menu do -%>
+  <div class="grid_6"><%= link_to "Tillbaka", bar_path(@beer.bar) %></div>
+<% end -%>
