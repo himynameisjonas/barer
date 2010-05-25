@@ -7,8 +7,10 @@
     <% i = i+1 %>
     <li class="barbox grid_3 <%=(i == 1 || (i-1)%4 == 0) ? 'alpha': ''%> <%=((i%4 == 0) && i != 1) ? 'omega': ''%>"><%= link_to "#{bar.name.capitalize}", bar_path(bar) %></li>
   <% end %>
-    <% (4-(@bars.size%4)).times do |i| %>
-      <li class="barbox grid_3<%= (i+1 == (4-(@bars.size%4))) ? ' omega' : '' %>"> </li>
+    <% if (4-(@bars.size%4)) != 4 %>
+      <%(4-(@bars.size%4)).times do |i| %>
+        <li class="barbox grid_3<%= (i+1 == (4-(@bars.size%4))) ? ' omega' : '' %>"> </li>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
