@@ -17,20 +17,8 @@
 </head>
 
 <body>
-
-<div id="header" class="container_12">
-    <h1 class="grid_12"><%= yield(:title) %></h1>
-</div>
-
-<div id="content" class="container_12 clearfix">
-  <%= render :partial => 'layouts/flashes' -%>
-  <%= yield %>
-</div>
-<div id="menu" class="container_12 clearfix">
-  <%= yield(:menu) %>
-</div>
-<div id="footer" class="container_12">
-  <p class="grid_4">
+<div id="footer" class="container_12 clearfix">
+  <p class="grid_4 alpha">
   <% if user_signed_in? %>
     <%= current_user.display_name %> | 
     <%= link_to "Logga ut", destroy_user_session_path %>
@@ -40,7 +28,20 @@
     <%= link_to "Logga in", new_user_session_path %>
   <% end %>
   </p>
-  </div>
+</div>
+<div id="header" class="container_12 clearfix">
+    <h1 class="grid_12"><%= yield(:title) %></h1>
+</div>
+
+<%= render :partial => 'layouts/flashes' -%>
+
+<div id="content" class="container_12 clearfix">  
+  <%= yield %>
+</div>
+<div id="menu" class="container_12 clearfix">
+  <%= yield(:menu) %>
+</div>
+
 </body>
 
 </html>

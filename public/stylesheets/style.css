@@ -1,7 +1,8 @@
 /* @override 
-	http://localhost:3000/stylesheets/style.css?1274710242
-	http://localhost:3000/stylesheets/style.css?1274778850
-	http://localhost:3000/stylesheets/style.css?1274785477
+	http://localhost:3000/stylesheets/style.css?1274786911
+	http://localhost:3000/stylesheets/style.css?1274787163
+	http://localhost:3000/stylesheets/style.css?1274787309
+	http://localhost:3000/stylesheets/style.css?1274787756
 */
 
 /* Containers
@@ -359,8 +360,28 @@
 
 /* REAL DEAL START */
 
+html {
+	height: 100%;
+  background-image: -moz-linear-gradient(top, #BFDF7F, #5F9F5F); /* FF3.6 */
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #BFDF7F),color-stop(1, #5F9F5F)); /* Saf4+, Chrome */
+            filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#BFDF7F', EndColorStr='#5F9F5F'); /* IE6,IE7 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#BFDF7F', EndColorStr='#5F9F5F')"; /* IE8 */
+}
+  
+
+
 body {
 	font-family: 'Vollkorn', Georgia, "Times New Roman", Times, serif;
+}
+
+#footer {
+	padding: 10px 0 10px 0
+}
+
+#content, #menu {
+	background: #fff;
+	padding-top: 30px;
+	padding-bottom: 10px;
 }
 
 .barbox {
@@ -370,17 +391,30 @@ body {
 }
 
 .barbox a {
+	text-align: center;
+	overflow: hidden;
 	color: #000;
 	display: block;
 	width: 100%;
 	height: 100%;
-	text-align: center;
-	line-height: 2em;
+	font-size: 120px;
+	line-height: 110px;
+	text-decoration: none;
+	-webkit-transition:font-size .2s ease-out;
+-moz-transition:font-size .2s ease-out;
+-o-transition:font-size .2s ease-out;
+transition:font-size .2s ease-out;
+}
+
+.barbox a:hover {
+	font-size: 20px;
+
 }
 
 .barbox a:hover, .barbox:hover {
 	color: #fff;
 	background: #BF3F5F;
+	text-align: center;
 }
 
 strong {
@@ -392,7 +426,10 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-	font-size: 5em;
+	font-size: 100px;
+	color: #325e41;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+filter: dropshadow(color=rgba(0, 0, 0, 0.2), offx=1, offy=1)
 }
 
 h2 {
