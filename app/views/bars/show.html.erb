@@ -1,53 +1,63 @@
-<h1 class="graytitle"><%= @bar.name.capitalize %></h1>
+<% content_for :title do -%>
+  <%= @bar.name.capitalize %>
+<% end -%>
 
 
-<ul class="pageitem">
-  <li class="textbox">
-    <span class="header">Adress</span>
+<div class="grid_6">
+  <div class="grid_3 alpha">
+    <h2>Adress</h2>
     <p>
-      <%= @bar.street.capitalize%>
-      <br/>
-      <%= @bar.city.capitalize%>
+    <%= @bar.street.capitalize%>
+    <%= @bar.city.capitalize%>
     </p>
-  </li>
-</ul>
+  </div>
 
-  <% if !@bar.lat.nil? && !@bar.lng.nil? %>
-    <h2 class="graytitle">karta</h2>
-    <ul class="pageitem">
-      <li class="textbox">
-        <img src="http://maps.google.com/maps/api/staticmap?center=<%=@bar.lat%>,<%=@bar.lng%>&zoom=16&size=400x400&markers=color:blue|<%=@bar.lat%>,<%=@bar.lng%>&sensor=false">
+  
+  <ul id="beers" class="grid_3 omega">
+    <h2>ölsorter och priser</h2>
+    <% if !@bar.beer.blank? %>
+      <% for beer in @bar.beer %>
+        <li>
+          <strong><%= beer.name %></strong>
+          <%= number_to_currency beer.price, :unit => 'SEK',:precision => 0, :format => "%n %u",:separator => ",", :delimiter => "." %>
+          <%= beer.comment %>
+        </li>
+      <% end %>
+    <% else %>
+      <li>
+        tomt
       </li>
-    </ul>
+    <% end %>
+  </ul>
+  
+  <div class="grid_6 omega alpha">
+    <h2>öpptettider</h2>
+    <% if !@bar.opening_hour.blank? %>
+      <ul>
+      <% for day in @bar.opening_hour %>
+        <li class="textbox">
+          <%= day.weekday %> <%= day.open.strftime("%H:%M") %>-<%= day.close.strftime("%H:%M") %>
+        </li>
+      <% end %>
+      </ul>
+    <% else %>
+      <li>tomt</li>
+    <% end %>
+  </div>
+  
+  <div class="grid_6 alpha omega">Skapad av <%=@bar.user.display_name%></div>
+  
+</div>
+<div class="grid_6">
+  <% if !@bar.lat.nil? && !@bar.lng.nil? %>
+    <img class="grid_6 alpha omega" src="http://maps.google.com/maps/api/staticmap?center=<%=@bar.lat%>,<%=@bar.lng%>&zoom=16&size=400x400&markers=color:blue|<%=@bar.lat%>,<%=@bar.lng%>&sensor=false">
   <%end%>
+</div>
 
-<% if !@bar.beer.blank? %>
-  <h2 class="graytitle">ölpriser</h2>
-  <ul class="pageitem">
-  <% for beer in @bar.beer %>
-    <li class="textbox">
-    <strong><%= beer.name %></strong>
-    <%= number_to_currency beer.price, :unit => 'SEK',:precision => 0, :format => "%n %u",:separator => ",", :delimiter => "." %>
-    <%= beer.comment %>
-    </li>
-  <% end %>
+<% content_for :menu do -%>
+  <ul class="grid_4">
+    <li class="menu"><%= link_to "<span class='name'>Lägg till nytt ölpris</span><span class='arrow'> </span>", new_bar_beer_path(@bar) %></li>
+    <li class="menu"><%= link_to "<span class='name'>Redigera Bar</span><span class='arrow'> </span>", edit_bar_path(@bar) %></li>
+    <li class="menu"><%= link_to "<span class='name'>Visa alla Barer</span><span class='arrow'> </span>", bars_path() %></li>
   </ul>
-<% end %>
-
-<% if !@bar.opening_hour.blank? %>
-  <h2 class="graytitle">öpptettider</h2>
-  <ul class="pageitem">
-  <% for day in @bar.opening_hour %>
-    <li class="textbox">
-      <%= day.weekday %> <%= day.open.strftime("%H:%M") %>-<%= day.close.strftime("%H:%M") %>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
-<ul class="pageitem"><li class="textbox"><small>Skapad av <%=@bar.user.display_name%></small></li></ul>
-
-<ul class="pageitem">
-  <li class="menu"><%= link_to "<span class='name'>Lägg till nytt ölpris</span><span class='arrow'> </span>", new_bar_beer_path(@bar) %></li>
-  <li class="menu"><%= link_to "<span class='name'>Redigera Bar</span><span class='arrow'> </span>", edit_bar_path(@bar) %></li>
-  <li class="menu"><%= link_to "<span class='name'>Visa alla Barer</span><span class='arrow'> </span>", bars_path() %></li>
-</ul>
+<% end -%>

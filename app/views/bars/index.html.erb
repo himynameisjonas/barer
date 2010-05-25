@@ -1,11 +1,17 @@
-<h1 class="graytitle">Barer</h1>
+<% content_for :title do -%>
+  Barer
+<% end -%>
 <% if !@bars.blank? %>
-  <ul class="pageitem">
-  <% for bar in @bars %>
-    <li class="menu"><%= link_to "<span class='name'>#{bar.name.capitalize}</span><span class='arrow'> </span>", bar_path(bar) %></li>
+  <ul class="grid_12">
+  <% @bars.each_with_index do |bar,i| %>
+    <% i = i+1 %>
+    <li class="barbox grid_3 <%=(i == 1 || (i-1)%4 == 0) ? 'alpha': ''%> <%=((i%4 == 0) && i != 1) ? 'omega': ''%>"><%= link_to "#{bar.name.capitalize}", bar_path(bar) %></li>
   <% end %>
+    <% (4-(@bars.size%4)).times do |i| %>
+      <li class="barbox grid_3<%= (i+1 == (4-(@bars.size%4))) ? ' omega' : '' %>"> </li>
+    <% end %>
   </ul>
 <% end %>
-<ul class="pageitem">
-<li class="menu"><%= link_to "<span class='name'>Lägg till ny bar</span><span class='arrow'> </span>", new_bar_path() %></li>
+<ul class="grid_12">
+<li ><%= link_to "Lägg till ny bar", new_bar_path() %></li>
 </ul>

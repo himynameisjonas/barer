@@ -6,6 +6,10 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
   <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
   <title>barer</title>
+  <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/reset/reset-min.css">
   <%= stylesheet_link_tag 'style' %>
   <%#= stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/reset-fonts-grids/reset-fonts-grids.css' %>
   <%#= stylesheet_link_tag 'http://yui.yahooapis.com/2.8.0r4/build/base/base-min.css' %>
@@ -14,12 +18,19 @@
 
 <body>
 
-<div id="content">
+<div id="header" class="container_12">
+    <h1 class="grid_12"><%= yield(:title) %></h1>
+</div>
+
+<div id="content" class="container_12 clearfix">
   <%= render :partial => 'layouts/flashes' -%>
   <%= yield %>
 </div>
-<div id="footer">
-  <p>
+<div id="menu" class="container_12 clearfix">
+  <%= yield(:menu) %>
+</div>
+<div id="footer" class="container_12">
+  <p class="grid_4">
   <% if user_signed_in? %>
     <%= current_user.display_name %> | 
     <%= link_to "Logga ut", destroy_user_session_path %>
